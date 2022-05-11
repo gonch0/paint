@@ -43,6 +43,7 @@ export default class Rect extends Tool {
             this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
             this.ctx.beginPath()
             this.ctx.rect(x, y, w, h)
+            this.ctx.fill()
             this.ctx.stroke()
         }
     }

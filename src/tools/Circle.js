@@ -41,7 +41,6 @@ export default class Circle extends Tool {
 
             this.ctx.beginPath();
             this.ctx.arc(x, y, r, 0, 2 * Math.PI, false);
-            this.ctx.lineWidth = 2;
             this.ctx.stroke();
         }
     }
