@@ -16,6 +16,7 @@ class CanvasState {
     pushToUndo(item) {
         this.undoList.push(item)
     }
+
     pushToRedo(item) {
         this.redoList.push(item)
     }
@@ -24,7 +25,7 @@ class CanvasState {
 
         if (this.undoList.length > 0) {
             const dataUrl = this.undoList.pop()
-            this.redoList.push(this.canvas.toDataURL())
+            this.pushToRedo(this.canvas.toDataURL())
             const img = new Image()
             img.src = dataUrl
             img.onload = () => {
@@ -41,7 +42,7 @@ class CanvasState {
 
         if (this.redoList.length > 0) {
             const dataUrl = this.redoList.pop()
-            this.undoList.push(this.canvas.toDataURL())
+            this.pushToUndo(this.canvas.toDataURL())
             const img = new Image()
             img.src = dataUrl
             img.onload = () => {

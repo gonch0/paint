@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Title</title>
+</head>
+<body>
+
+<button id='btn'>
+    Send message
+</button>
+
+<script>
+    const btn = document.querySelector('#btn')
+    const socket = new WebSocket('ws://localhost:5000/')
+
+    socket.onopen = () => {
+        console.log('connected');
+        socket.send(JSON.stringify({
+            message: 'Hello',
+            method: 'connection',
+            id: 123,
+            username: 'user',
+        }))
+    }
+
+    socket.onmessage = (event) => {
+        console.log('message from server = ', event.data);
+    }
+
+    btn.onclick = () => {
+        socket.send(JSON.stringify({
+            message: 'Hello',
+            method: 'connection',
+            id: 123,
+            username: 'user',
+        }))
+    }
+
+</script>
+</body>
+</html>
